@@ -1,0 +1,270 @@
+/* ══════════════════════════════════════════════════════════════════
+   BI Migration Platform — Premium Light Design System
+   ══════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Reset ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── CSS Variables ───────────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg-base:       #f8fafc;
+  --bg-surface:    #ffffff;
+  --bg-elevated:   #f1f5f9;
+  --bg-hover:      #e2e8f0;
+  --bg-active:     #cbd5e1;
+
+  /* Borders */
+  --border:        #e2e8f0;
+  --border-light:  #f1f5f9;
+
+  /* Text */
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary:  #64748b;
+  --text-muted:     #94a3b8;
+
+  /* Accent – electric blue */
+  --accent:        #2563eb;
+  --accent-hover:  #1d4ed8;
+  --accent-glow:   rgba(37,99,235,0.15);
+  --accent-subtle: rgba(37,99,235,0.06);
+
+  /* Status colors */
+  --green:         #059669;
+  --green-bg:      rgba(5,150,105,0.08);
+  --yellow:        #d97706;
+  --yellow-bg:     rgba(217,119,6,0.08);
+  --red:           #dc2626;
+  --red-bg:        rgba(220,38,38,0.08);
+  --blue-bg:       rgba(37,99,235,0.08);
+
+  /* Old variable compatibility */
+  --font-sans:               'Inter', sans-serif;
+  --color-text-primary:      var(--text-primary);
+  --color-text-secondary:    var(--text-secondary);
+  --color-text-tertiary:     var(--text-tertiary);
+  --color-text-info:         var(--accent);
+  --color-text-success:      var(--green);
+  --color-text-warning:      var(--yellow);
+  --color-text-danger:       var(--red);
+  --color-background-primary:   var(--bg-surface);
+  --color-background-secondary: var(--bg-elevated);
+  --color-background-info:      var(--blue-bg);
+  --color-background-success:   var(--green-bg);
+  --color-background-warning:   var(--yellow-bg);
+  --color-background-danger:    var(--red-bg);
+  --color-border-tertiary:      var(--border);
+  --border-radius-sm:  6px;
+  --border-radius-md:  8px;
+  --border-radius-lg:  12px;
+  --border-radius-xl:  16px;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Animations ──────────────────────────────────────────────────── */
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+@keyframes spin  { to { transform: rotate(360deg); } }
+@keyframes slideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(37,99,235,0.15); }
+  50%       { box-shadow: 0 0 20px rgba(37,99,235,0.3); }
+}
+
+/* ── Utility classes ─────────────────────────────────────────────── */
+.animate-pulse  { animation: pulse 1.5s ease-in-out infinite; }
+.animate-spin   { animation: spin 1s linear infinite; }
+.animate-slide  { animation: slideIn 0.25s ease; }
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+}
+
+/* ── Status badge colours ────────────────────────────────────────── */
+.badge { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; padding:2px 8px; border-radius:99px; white-space:nowrap; }
+.badge-info    { background:var(--blue-bg);   color:var(--accent);  border:1px solid rgba(37,99,235,0.25); }
+.badge-success { background:var(--green-bg);  color:var(--green);   border:1px solid rgba(16,185,129,0.25); }
+.badge-warning { background:var(--yellow-bg); color:var(--yellow);  border:1px solid rgba(245,158,11,0.25); }
+.badge-danger  { background:var(--red-bg);    color:var(--red);     border:1px solid rgba(239,68,68,0.25); }
+.badge-neutral { background:var(--bg-elevated); color:var(--text-secondary); border:1px solid var(--border); }
+
+/* ── Agent runner spin icon ──────────────────────────────────────── */
+.ti-loader { display:inline-block; animation: spin 1s linear infinite; }
+
+/* ── Tab underline active ────────────────────────────────────────── */
+.tab-btn {
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.15s;
+  font-family: 'Inter', sans-serif;
+}
+.tab-btn:hover { color: var(--text-primary); }
+.tab-btn.active { font-weight: 500; color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── Buttons ─────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 8px;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.15s; border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--accent); color: white; border-color: var(--accent);
+}
+.btn-primary:hover { background: var(--accent-hover); box-shadow: 0 0 16px rgba(37,99,235,0.4); }
+.btn-danger {
+  background: var(--red-bg); color: var(--red); border-color: rgba(239,68,68,0.3);
+}
+.btn-danger:hover { background: rgba(239,68,68,0.2); }
+.btn-ghost {
+  background: var(--bg-elevated); color: var(--text-secondary); border-color: var(--border);
+}
+.btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+/* ── Card ────────────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+.card-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500;
+}
+
+/* ── Brand gradient header ───────────────────────────────────────── */
+.brand-gradient {
+  background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 50%, #ec4899 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────── */
+.sidebar {
+  width: 272px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+/* ── Upload zone ─────────────────────────────────────────────────── */
+.upload-zone {
+  border: 2px dashed var(--border-light);
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--bg-elevated);
+  transition: all 0.2s;
+}
+.upload-zone:hover, .upload-zone.dragging {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+.upload-zone.loading { cursor: not-allowed; opacity: 0.7; }
+
+/* ── Job row ─────────────────────────────────────────────────────── */
+.job-row {
+  padding: 10px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+  transition: background 0.1s;
+}
+.job-row:hover { background: var(--bg-hover); }
+.job-row.selected { background: var(--accent-subtle); border-left: 2px solid var(--accent); }
+
+/* ── Agent step card ─────────────────────────────────────────────── */
+.agent-step {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  transition: all 0.3s;
+  animation: slideIn 0.25s ease;
+}
+.agent-step.running {
+  border-color: rgba(37,99,235,0.4);
+  background: rgba(37,99,235,0.06);
+  animation: glow 2s ease-in-out infinite;
+}
+.agent-step.completed { border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.05); }
+.agent-step.failed    { border-color: rgba(239,68,68,0.3);  background: rgba(239,68,68,0.05);  }
+
+/* ── Stat cards ──────────────────────────────────────────────────── */
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+/* ── Ai log expandable ───────────────────────────────────────────── */
+.ai-log-box {
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--text-secondary);
+  max-height: 180px;
+  overflow-y: auto;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Ollama indicator ────────────────────────────────────────────── */
+.ollama-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  display: inline-block; margin-right: 4px;
+}
+.ollama-dot.online  { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.ollama-dot.offline { background: var(--red); }
+.ollama-dot.checking { background: var(--yellow); animation: pulse 1s ease-in-out infinite; }

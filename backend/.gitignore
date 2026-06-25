@@ -1,0 +1,16 @@
+# Python/FastAPI specific ignore
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.env
+
+# Local DBs, uploads and outputs
+database.db
+migration.db
+uploads/
+outputs/
